@@ -17,7 +17,7 @@ pub fn main() !void {
         ) !void {
             _ = fmt;
             _ = options;
-            try writer.print("{d:.6}", .{self.data});
+            try writer.print("{d:.2}", .{self.data});
         }
 
         pub fn add(self: @This(), other: @This()) @This() {
@@ -30,9 +30,9 @@ pub fn main() !void {
     };
 
     const a = Value.init(4.0);
-    const b = Value.init(2.1);
-    const c = a.add(b);
-    const d = a.mul(b);
-    std.debug.print("c: {}\n", .{c});
+    const b = Value.init(2.0);
+    const c = Value.init(3.0);
+    const d = (a.mul(b)).add(c);
+
     std.debug.print("d: {}\n", .{d});
 }
